@@ -1,0 +1,23 @@
+{
+  "name": "actions-saucelabs-insights",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "bunyan": "^1.8.15",
+    "got": "^11.8.2"
+  },
+  "devDependencies": {
+    "p-iteration": "^1.1.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camelotls/actions-saucelabs-insights.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camelotls/actions-saucelabs-insights/issues"
+  },
+  "homepage": "https://github.com/camelotls/actions-saucelabs-insights#readme",
+  "description": ""
+}

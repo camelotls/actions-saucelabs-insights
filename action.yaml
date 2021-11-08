@@ -1,0 +1,29 @@
+name: "SauceLabs Insights"
+description: "Uses SauceLabs API to provide insights for the functional tests run on SauceLabs"
+inputs:
+    SAUCE_USERNAME:
+        description: "Github secret for the sauce username"
+        required: true
+    SAUCE_ACCESS_KEY:
+        description: "Github secret for the sauce access key"
+        required: true
+    SAUCE_API_BASE_URL:
+        description: "SauceLabs base URL"
+        required: false
+        default: "https://api.eu-central-1.saucelabs.com"
+    BRANCH_NAME:
+        description: "Name of the branch the action will use"
+        required: false
+        default: 'master'
+    PLATFORMS:
+        description: "Platforms used on tests"
+        required: false
+    SAUCE_OWNER:
+        description: "The name of one or more users in the requestor's organization who executed the requested tests."
+        required: true
+    RUNS_ON_GITHUB:
+        description: "Indicates if the action runs on GitHub or locally, on a Docker container, for testing purposes"
+        required: true
+runs:
+    using: "docker"
+    image: "Dockerfile"

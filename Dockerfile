@@ -1,0 +1,16 @@
+FROM node:12.9.0
+
+WORKDIR /
+
+ARG SAUCE_USERNAME
+ARG SAUCE_ACCESS_KEY
+
+ENV SAUCE_USERNAME=$SAUCE_USERNAME \
+    SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY \
+    RUNS_ON_GITHUB=$RUNS_ON_GITHUB
+
+COPY index.js package.json package-lock.json ./
+
+RUN npm install
+
+ENTRYPOINT ["node", "/index.js"]
