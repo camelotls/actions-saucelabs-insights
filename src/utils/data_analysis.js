@@ -5,9 +5,6 @@ const roundToTwoDecimals = (num) => {
 const formatTime = (time) => {
     let formattedTime;
 
-    if (parseInt(time) === time) {
-        formattedTime = `${time}:00`;
-    } else {
         let [integerPart, decimalPart] = `${time}`.split('.');
 
         //Normalize seconds to base of 60, add minutes and seconds together and round to 2 decimals.
@@ -19,6 +16,8 @@ const formatTime = (time) => {
         if (formattedTime.length === 3){
             formattedTime = [formattedTime.slice(0, 2), '0', formattedTime.slice(2)].join('');
         }
+    if (formattedTime.length === 1) {
+        formattedTime = `${formattedTime}:00`;
     }
     return formattedTime
 }
