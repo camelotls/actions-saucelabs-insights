@@ -1,5 +1,6 @@
 const bunyan = require('bunyan');
 const {GETRequestWrapper} = require('./helper');
+const {getPastDate} = require('../utils/dates')
 
 const log = bunyan.createLogger({name: 'actions-sauce-labs-insights'});
 
@@ -8,16 +9,19 @@ const sauce_credentials = {
     password: process.env.SAUCE_ACCESS_KEY
 }
 
-const getTestNames = async (timeRange) => {
+const getTestNames = async () => {
     try {
+        const startDate = getPastDate(7);
+        const endDate = getPastDate(0);
+
         const response = await GETRequestWrapper(
             process.env.SAUCE_API_BASE_URL,
             sauce_credentials,
             '/v1/analytics/tests',
             [
-                ['time_range', `${timeRange}`],
+                ['start', `${startDate}`],
+                ['end', `${endDate}`],
                 ['scope', 'single'],
-                ['owner', `${process.env.SAUCE_OWNER}`],
             ]);
 
         return JSON.parse(response.body)

@@ -19,7 +19,7 @@ inputs:
         description: "Platforms used on tests"
         required: false
     SAUCE_OWNER:
-        description: "The name of one or more users in the requestor's organization who executed the requested tests."
+        description: "The name of one or more users in the organization who executed the requested tests."
         required: true
     RUNS_ON_GITHUB:
         description: "Indicates if the action runs on GitHub or locally, on a Docker container, for testing purposes"

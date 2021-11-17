@@ -1,6 +1,5 @@
 class Report {
-    constructor(testName, averageTime, passRate) {
-        this.testName = testName;
+    constructor(averageTime, passRate) {
         this.averageTime = averageTime;
         this.passRate = passRate;
     }
