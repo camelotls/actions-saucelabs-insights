@@ -1,23 +1,31 @@
 {
   "name": "actions-saucelabs-insights",
   "version": "1.0.0",
+  "description": "Integrate Github and Jira in order to create issues in case of a vulnerability found",
   "main": "index.js",
-  "dependencies": {
-    "bunyan": "^1.8.15",
-    "got": "^11.8.2"
-  },
-  "devDependencies": {
-    "p-iteration": "^1.1.8"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/camelotls/actions-saucelabs-insights.git"
+  "scripts": {
+    "start": "node index.js",
+    "test:unit": "nyc mocha",
+    "lint": "./node_modules/.bin/eslint"
   },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/camelotls/actions-saucelabs-insights/issues"
+  "license": "MIT",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "got": "^11.8.2",
+    "lodash": "^4.17.21"
   },
-  "homepage": "https://github.com/camelotls/actions-saucelabs-insights#readme",
-  "description": ""
+  "devDependencies": {
+    "bunyan": "1.8.15",
+    "child_process": "1.0.2",
+    "dirty-json": "0.9.2",
+    "eslint": "7.28.0",
+    "eslint-config-standard": "16.0.3",
+    "eslint-plugin-import": "2.25.2",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "5.1.0",
+    "jsonschema": "1.4.0",
+    "loadash": "^1.0.0",
+    "p-iteration": "^1.1.8"
+  }
 }

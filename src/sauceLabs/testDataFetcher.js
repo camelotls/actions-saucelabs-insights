@@ -9,20 +9,13 @@ const sauce_credentials = {
     password: process.env.SAUCE_ACCESS_KEY
 }
 
-const getTestData = async (period, testName) => {
+const getData = async (searchOptions, url) => {
     try {
-        const startDate = getPastDate(period);
-        const endDate = getPastDate(0);
-
         const response = await GETRequestWrapper(
             process.env.SAUCE_API_BASE_URL,
             sauce_credentials,
-            '/v1/analytics/tests',
-            [
-                ['start', `${startDate}`],
-                ['end', `${endDate}`],
-                ['query', `${testName}`],
-            ]);
+            url,
+            searchOptions);
 
         // TODO The file created is used for debug purposes, should be removed
         // fs.writeFile(`debug/${testName.replace(/\s/g, '-').replace(/\//g, '')}_test.json`, response.body, function (err) {
@@ -32,11 +25,11 @@ const getTestData = async (period, testName) => {
 
         return JSON.parse(response.body);
     } catch (error) {
-        log.warn(`Request encountered the following error while fetching data for ${testName} test: ${error.message}`);
+        log.warn(`Request encountered the following error while fetching data with error: ${error.message}`);
         return error;
     }
 }
 
 module.exports = {
-    getTestData
+    getData
 }
