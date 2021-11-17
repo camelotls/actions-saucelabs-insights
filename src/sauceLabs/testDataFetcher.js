@@ -1,7 +1,6 @@
 const fs = require('fs');
 const bunyan = require('bunyan');
 const {GETRequestWrapper} = require('./helper');
-const {getPastDate} = require('../utils/dates')
 const log = bunyan.createLogger({name: 'actions-sauce-labs-insights'});
 
 const sauce_credentials = {
@@ -9,12 +8,12 @@ const sauce_credentials = {
     password: process.env.SAUCE_ACCESS_KEY
 }
 
-const getData = async (searchOptions, url) => {
+const getData = async (searchOptions) => {
     try {
         const response = await GETRequestWrapper(
             process.env.SAUCE_API_BASE_URL,
             sauce_credentials,
-            url,
+            '/v1/analytics/tests',
             searchOptions);
 
         // TODO The file created is used for debug purposes, should be removed
