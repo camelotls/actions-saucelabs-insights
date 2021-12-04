@@ -11,7 +11,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "fs": "0.0.1-security",
     "got": "^11.8.2",
     "lodash": "^4.17.21"
   },

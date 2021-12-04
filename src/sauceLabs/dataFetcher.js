@@ -1,4 +1,3 @@
-const fs = require('fs');
 const bunyan = require('bunyan');
 const {GETRequestWrapper} = require('./helper');
 const log = bunyan.createLogger({name: 'actions-sauce-labs-insights'});
