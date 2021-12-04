@@ -7,7 +7,7 @@ const getTestData = async (testName) => {
     let flag = true;
     while (flag) {
         const searchOptions = [
-            ['start', getPastDate(7)],
+            ['start', getPastDate(process.env.TIMEFRAME)],
             ['end', getPastDate(0)],
             ['query', `${testName}`],
             ['from', recordNumber]
