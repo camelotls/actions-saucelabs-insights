@@ -5,17 +5,17 @@ const roundToTwoDecimals = (num) => {
 const formatTime = (time) => {
     let formattedTime;
 
-        let [integerPart, decimalPart] = `${time}`.split('.');
+    let [integerPart, decimalPart] = `${time}`.split('.');
 
-        //Normalize seconds to base of 60, add minutes and seconds together and round to 2 decimals.
-        formattedTime = roundToTwoDecimals(Number(`${parseFloat(integerPart)}.${parseFloat(decimalPart) * 60}`))
+    //Normalize seconds to base of 60, add minutes and seconds together and round to 2 decimals.
+    formattedTime = roundToTwoDecimals(Number(`${parseFloat(integerPart)}.${parseFloat(decimalPart) * 60}`))
 
-        formattedTime = `${formattedTime}`.replace('.', ':')
+    formattedTime = `${formattedTime}`.replace('.', ':')
 
-        //If time is for example 1:3 it should be 1:03.
-        if (formattedTime.length === 3){
-            formattedTime = [formattedTime.slice(0, 2), '0', formattedTime.slice(2)].join('');
-        }
+    //If time is for example 1:3 it should be 1:03.
+    if (formattedTime.length === 3) {
+        formattedTime = [formattedTime.slice(0, 2), '0', formattedTime.slice(2)].join('');
+    }
     if (formattedTime.length === 1) {
         formattedTime = `${formattedTime}:00`;
     }
@@ -36,14 +36,14 @@ const testAverageDuration = (testList) => {
     return formatTime(average);
 }
 
-const testPassRate = (testList) => {
+const testPassRate = (testData) => {
     let numberOfPassedTests = 0
-    testList.forEach((test) => {
+    testData.forEach((test) => {
         if (test.status === 'passed') {
             numberOfPassedTests += 1
         }
     });
-    return roundToTwoDecimals(100 * numberOfPassedTests / testList.length) + "%"
+    return roundToTwoDecimals(100 * numberOfPassedTests / testData.length);
 }
 
 module.exports = {

@@ -1,29 +1,38 @@
 const {getTestNames} = require('./src/sauceLabs/getTestNames');
+const {forEach} = require('p-iteration');
 
-const fs = require('fs');
-const _ = require('lodash');
-const {generateReport} = require("./src/reportGenerator/generate_report");
-const {forEach} = require("p-iteration");
+const {getTestData} = require('./src/sauceLabs/getTestData');
+const {filterTests} = require('./src/utils/filter');
+const {testPassRate, testAverageDuration} = require('./src/utils/data_analysis');
+const Report = require('./src/reporter/reporter');
 
 
 const start = async () => {
-    const platforms = ['Android', 'iOS'];
-    await forEach(platforms, async (platform) => {
-            const testNames = await getTestNames(platform);
-            //TODO Remove the below debug code
-            fs.writeFile(`debug/testNames_${platform}.json`, JSON.stringify(testNames), function (err) {
-                if (err) throw err;
-            });
+    const builds = [
+        'Execute_IOS_Tests',
+        'Execute_Android_Tests',
+    ];
 
-            const report = await generateReport(testNames, platform);
-            fs.writeFile(`debug/report_${platform}.json`, JSON.stringify(report), function (err) {
-                if (err) throw err;
-            });
-            console.log(testNames.length)
-            console.table(report);
+    const report = {};
+    await forEach(builds, async (build) => {
+        const testNames = await getTestNames(build);
+        await forEach(testNames, async (testName) => {
+            const testData = await getTestData(testName);
+            let filteredTestData = filterTests(testData, 'build', build);
+            filteredTestData = filterTests(filteredTestData, 'build', 'master');
 
-        }
-    )
+
+            if (testPassRate(filteredTestData) && testPassRate(filteredTestData) < 90) {
+                report[`${testName}`] = new Report(
+                    `${testAverageDuration(filteredTestData) + '%'}`,
+                    `${testPassRate(filteredTestData)}`,
+                );
+            }
+        })
+
+
+    });
+    console.table(report)
 }
 
 (async () => {
