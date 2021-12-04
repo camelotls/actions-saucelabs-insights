@@ -20,10 +20,10 @@ const start = async () => {
                 `${testPassRate(filteredTestData)}`,
             );
         }
-    })
+    });
 
-    console.table(report)
-}
+    console.table(report);
+};
 
 (async () => {
     await start();

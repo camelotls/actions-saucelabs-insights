@@ -3,6 +3,6 @@ class Report {
         this.averageTime = averageTime;
         this.passRate = passRate;
     }
-}
+};
 
 module.exports = Report;

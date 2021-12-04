@@ -21,7 +21,7 @@ const GETRequestWrapper = async (
         ['scope', 'single'],
         ['owner', `${process.env.SAUCE_OWNER}`],
     ]
-    baseSearchOptions.forEach( (option) => searchOptions.push(option) )
+    baseSearchOptions.forEach((option) => searchOptions.push(option))
 
     const searchParams = new URLSearchParams(searchOptions);
 
@@ -30,7 +30,7 @@ const GETRequestWrapper = async (
         options,
         {searchParams}
     );
-}
+};
 
 module.exports = {
     GETRequestWrapper

@@ -39,7 +39,8 @@ const getTestNames = async (build) => {
         recordNumber += 1000;
     }
     return _.uniq(testNames);
-}
+};
+
 module.exports = {
     getTestNames
 }

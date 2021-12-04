@@ -23,7 +23,7 @@ const getTestData = async (testName) => {
         recordNumber += 1000;
     }
     return finalTestData
-}
+};
 
 module.exports = {
     getTestData
