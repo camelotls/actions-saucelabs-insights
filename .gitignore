@@ -1,0 +1,20 @@
+# IntelliJ
+.idea/
+
+# node.js
+node_modules/
+
+#Report Output
+.nyc_output/
+
+#Report Output
+payloads
+
+#DS_Store
+.DS_Store
+
+#VS Code
+.vscode/
+
+#Dotenv
+.env
