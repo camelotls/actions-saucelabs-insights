@@ -25,7 +25,10 @@ inputs:
     description: How many days worth of data will the action use
     required: false
     default: '7'
-
+  MINIMUM_PASS_RATE:
+    description: Tests with pass rate lower than this value will be displayed
+    required: false
+    default: '90'
 runs:
   using: docker
   image: Dockerfile

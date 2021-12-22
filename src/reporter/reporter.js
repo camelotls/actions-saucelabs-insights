@@ -1,7 +1,8 @@
 class Report {
-    constructor(averageTime, passRate) {
-        this.averageTime = averageTime;
+    constructor(passRate, averageTime, platform) {
         this.passRate = passRate;
+        this.averageTime = averageTime;
+        this.platform = platform;
     }
 };
 
