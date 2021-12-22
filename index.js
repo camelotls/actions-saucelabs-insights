@@ -4,7 +4,6 @@ const {filterData} = require('./src/utils/filter');
 const {testPassRate, testAverageDuration} = require('./src/utils/data_analysis');
 const {forEach} = require('p-iteration');
 const Report = require('./src/reporter/reporter');
-const fs = require("fs");
 
 const start = async () => {
 
