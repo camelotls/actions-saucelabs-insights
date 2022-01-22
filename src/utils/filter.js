@@ -1,11 +1,9 @@
-const filterData = (dataList, filterType, filter) => {
-    if (dataList) {
-        return dataList.filter((data) => data[filterType].includes(`${filter}`)
-        );
-    }
-    return []
+const filterData = (dataList, filter) => {
+  return dataList.filter((data) =>
+    data[filter.type].includes(`${filter.value}`)
+  );
 };
 
 module.exports = {
-    filterData
-}
+  filterData,
+};
